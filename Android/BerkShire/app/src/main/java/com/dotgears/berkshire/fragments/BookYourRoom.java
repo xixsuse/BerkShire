@@ -1,26 +1,31 @@
-package com.dotgears.reproom.fragments;
+package com.dotgears.berkshire.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
-import com.dotgears.reproom.R;
-
+import com.weiwangcn.betterspinner.library.BetterSpinner;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+import com.dotgears.berkshire.R;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import org.joda.time.DateTime;
 
-/**
- * Created by My PC on 18/11/2015.
- */
-public class BookingYourRoom extends Fragment {
+
+public class BookYourRoom extends Fragment {
+    @InjectView(R.id.spinner1)
+    BetterSpinner spinner1;
     private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
     private TextView checkIn, checkOut;
@@ -30,9 +35,23 @@ public class BookingYourRoom extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.booking_your_room, container, false);
+
+        rootView = inflater.inflate(R.layout.book_your_room, container, false);
+//        ButterKnife.inject(getActivity());
+
+//        String[] list = getResources().getStringArray(R.array.month);
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(),
+//                android.R.layout.simple_dropdown_item_1line, list);
+//
+//        spinner1.setAdapter(adapter);
         checkIn = (TextView) rootView.findViewById(R.id.checkIn);
         checkOut = (TextView) rootView.findViewById(R.id.checkOut);
+
+
+
+
+
 
         checkIn.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -73,7 +92,18 @@ public class BookingYourRoom extends Fragment {
 
         return rootView;
     }
-
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }

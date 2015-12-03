@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
+
+
+    <TableLayout
+        android:id="@+id/tblSearch"
+        android:layout_width="match_parent"
+        android:layout_height="240dip"
+        android:layout_margin="10dip"
+        android:background="@color/bpWhite">
+
+        <!-- Row 1 Pick Location -->
+        <TableRow
+            android:id="@+id/tblRow1"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:padding="5dip">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:cursorVisible="false"
+                android:inputType="textPostalAddress"
+                android:text="Hà Nội"
+
+                android:textSize="16sp" />
+        </TableRow>
+        <!-- Row 2 Pick Date -->
+        <TableRow
+            android:id="@+id/tblRow2"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:padding="5dip">
+
+            <LinearLayout
+                android:id="@+id/linCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_margin="10dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/checkIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dip"
+                    android:text="02 - T12 - 2015"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_margin="10dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/checkOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dip"
+                    android:text="04 - T12 - 2015"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tblRow3"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:padding="5dip">
+
+            <LinearLayout
+                android:id="@+id/linRoom"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:gravity="center"
+                    android:text="Room"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/contentRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:gravity="center"
+                    android:text="Room"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linPerson"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titlePerson"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:gravity="center"
+                    android:text="Person"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <!--<com.weiwangcn.betterspinner.library.BetterSpinner-->
+                    <!--android:id="@+id/spinner1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+                    <!--android:hint="BetterSpinner" />-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dip"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

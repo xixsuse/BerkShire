@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BerkShire</string>
+
+    <string name="book_your_room">Book Your Room</string>
+    <string name="booking_history">Booking History</string>
+    <string name="invite_friend">Invite Friend</string>
+    <string name="coupon">Coupon</string>
+    <string name="feedback">Feedback</string>
+    <string name="help">Help</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="contact">Contact</string>
+    <string name="member">Member</string>
+    <string name="action_settings">Settings</string>
+</resources>
