@@ -91,15 +91,15 @@
                 <TextView
                     android:id="@+id/titleRoom"
                     android:layout_width="match_parent"
-                    android:layout_height="30dip"
+                    android:layout_height="20dip"
                     android:gravity="center"
-                    android:text="Room"
+                    android:text="ROOMS"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/contentRoom"
                     android:layout_width="match_parent"
-                    android:layout_height="30dip"
+                    android:layout_height="40dip"
                     android:gravity="center"
                     android:text="Room"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -115,17 +115,17 @@
                 <TextView
                     android:id="@+id/titlePerson"
                     android:layout_width="match_parent"
-                    android:layout_height="30dip"
+                    android:layout_height="20dip"
                     android:gravity="center"
-                    android:text="Person"
+                    android:text="PERSONS"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <!--<com.weiwangcn.betterspinner.library.BetterSpinner-->
-                    <!--android:id="@+id/spinner1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
-                    <!--android:hint="BetterSpinner" />-->
+                <com.weiwangcn.betterspinner.library.BetterSpinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:hint="1" />
 
             </LinearLayout>
 

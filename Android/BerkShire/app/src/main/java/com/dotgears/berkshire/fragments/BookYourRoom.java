@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import com.dotgears.berkshire.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,14 +36,17 @@ public class BookYourRoom extends Fragment {
 
 
         rootView = inflater.inflate(R.layout.book_your_room, container, false);
-//        ButterKnife.inject(getActivity());
+        spinner1 = (BetterSpinner)rootView.findViewById(R.id.spinner1);
+        ButterKnife.inject(getActivity());
 
-//        String[] list = getResources().getStringArray(R.array.month);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(),
-//                android.R.layout.simple_dropdown_item_1line, list);
-//
-//        spinner1.setAdapter(adapter);
+        String[] list = getResources().getStringArray(R.array.month);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(),
+                android.R.layout.simple_dropdown_item_1line, list);
+
+        spinner1.setAdapter(adapter);
+
+
         checkIn = (TextView) rootView.findViewById(R.id.checkIn);
         checkOut = (TextView) rootView.findViewById(R.id.checkOut);
 
@@ -92,18 +94,7 @@ public class BookYourRoom extends Fragment {
 
         return rootView;
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    
 
 
 }
