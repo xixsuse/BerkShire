@@ -11,7 +11,7 @@
         android:id="@+id/tblSearch"
         android:layout_width="match_parent"
         android:layout_height="240dip"
-        android:layout_margin="10dip"
+        android:layout_margin="20dip"
         android:background="@color/bpWhite">
 
         <!-- Row 1 Pick Location -->
@@ -19,17 +19,17 @@
             android:id="@+id/tblRow1"
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:padding="5dip">
+            android:padding="10dip">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/edtLocation"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="30dip"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:cursorVisible="false"
                 android:inputType="textPostalAddress"
-                android:text="Hà Nội"
+                android:text="1"
 
                 android:textSize="16sp" />
         </TableRow>
@@ -37,40 +37,143 @@
         <TableRow
             android:id="@+id/tblRow2"
             android:layout_width="match_parent"
-            android:layout_height="60dip"
-            android:padding="5dip">
+            android:layout_height="100dip">
 
             <LinearLayout
                 android:id="@+id/linCheckIn"
                 android:layout_width="match_parent"
-                android:layout_height="60dip"
-                android:layout_margin="10dip"
+                android:layout_height="100dip"
                 android:layout_weight="1"
+                android:background="@drawable/border_bottom_top"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/checkIn"
+                    android:id="@+id/ckInTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:textColor="#B6B6B6"
+                    android:text="CHECK IN"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:id="@+id/ckInRow"
                     android:layout_width="match_parent"
                     android:layout_height="60dip"
-                    android:text="02 - T12 - 2015"
-                    android:textSize="20sp" />
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ckInRowDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ckInDay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dip"
+                            android:layout_gravity="right"
+                            android:text="02"
+                            android:textSize="50sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ckInRowMonthYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ckInMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dip"
+                            android:layout_gravity="left"
+                            android:text="T11"
+                            android:textSize="26sp" />
+
+                        <TextView
+                            android:id="@+id/ckInYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dip"
+                            android:text="2015"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linCheckOut"
                 android:layout_width="match_parent"
-                android:layout_height="60dip"
-                android:layout_margin="10dip"
+                android:layout_height="100dip"
                 android:layout_weight="1"
+                android:background="@drawable/border_without_right"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/checkOut"
+                    android:id="@+id/ckOutTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:textColor="#B6B6B6"
+                    android:text="CHECK OUT"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:id="@+id/ckOutRow"
                     android:layout_width="match_parent"
                     android:layout_height="60dip"
-                    android:text="04 - T12 - 2015"
-                    android:textSize="20sp" />
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ckOutRowDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ckOutDay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dip"
+                            android:layout_gravity="right"
+                            android:text="02"
+                            android:textSize="50sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ckOutRowMonthYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ckOutMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dip"
+                            android:layout_gravity="left"
+                            android:text="T11"
+                            android:textSize="26sp" />
+
+                        <TextView
+                            android:id="@+id/ckOutYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dip"
+                            android:text="2015"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
         </TableRow>
@@ -136,7 +239,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
+                <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="60dip"
@@ -146,5 +249,29 @@
             </LinearLayout>
         </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginBottom="20dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:textColor="@color/bpWhite"
+            android:background="#0099FF"
+            android:text="SEARCH HOTELS" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dip"
+            android:gravity="center"
+            android:layout_marginTop="20dip"
+            android:text="Need Help? Call Us" />
+    </LinearLayout>
 
 </LinearLayout>

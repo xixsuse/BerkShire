@@ -1,4 +1,4 @@
-package com.dotgears.berkshire;
+package com.dotgears.berkshire.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.dotgears.berkshire.R;
 import com.dotgears.berkshire.fragments.BookYourRoom;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;

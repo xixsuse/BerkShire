@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dip">
+
+    <!-- Thumbnail -->
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="fill_parent"
+        android:scaleType="fitXY"
+        android:layout_height="200dip" />
+
+    <TableLayout
+        android:id="@+id/tblListHotel"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:background="@color/bpWhite">
+
+        <TableRow
+            android:id="@+id/tblRow"
+            android:layout_width="match_parent"
+            android:layout_height="60dip">
+
+            <LinearLayout
+                android:id="@+id/linNameHotel"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:padding="5dip">
+
+                <TextView
+                    android:id="@+id/hotelName"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:text="Khách Sạn Golden Lakeside"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:ellipsize="end"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hotelAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:text="Khách Sạn Golden Lakeside"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linPriceHotel"
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_weight="2"
+                android:background="@drawable/border_left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/hotelPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dip"
+                    android:text="700k"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal|center"/>
+
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
