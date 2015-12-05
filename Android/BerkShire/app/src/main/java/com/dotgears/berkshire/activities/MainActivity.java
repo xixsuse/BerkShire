@@ -2,16 +2,12 @@ package com.dotgears.berkshire.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.dotgears.berkshire.R;
 import com.dotgears.berkshire.fragments.BookYourRoom;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -22,54 +18,69 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
-import com.mikepenz.materialize.util.UIUtils;
+
+//import com.mikepenz.materialdrawer.app.drawerItems.CustomPrimaryDrawerItem;
+//import com.mikepenz.materialdrawer.app.drawerItems.CustomUrlPrimaryDrawerItem;
+//import com.mikepenz.materialdrawer.app.drawerItems.OverflowMenuDrawerItem;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int PROFILE_SETTING = 1;
 
-    private AccountHeader headerResult;
-    private Drawer result;
+    //save our header or result
+    private AccountHeader headerResult = null;
+    private Drawer result = null;
+
+    private IProfile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Handle Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        CollapsingToolbarLayout.LayoutParams lp = (CollapsingToolbarLayout.LayoutParams) toolbar.getLayoutParams();
-        lp.height = lp.height + UIUtils.getStatusBarHeight(this);
-        toolbar.setLayoutParams(lp);
+        getSupportActionBar().setTitle("BerkShire");
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle("BerkShire Hotel");
+        // Create a few sample profile
+        profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile));
 
-        headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withCompactStyle(false)
-                .withHeaderBackground(R.drawable.header)
-                .withSavedInstance(savedInstanceState)
-                .build();
+        // Create the AccountHeader
+        buildHeader(false, savedInstanceState);
 
+        //Create the drawer
         result = new DrawerBuilder()
                 .withActivity(this)
-                .withAccountHeader(headerResult)
                 .withToolbar(toolbar)
-                .withFullscreen(true)
+                .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.book_your_room).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
-                        new PrimaryDrawerItem().withName(R.string.booking_history).withIcon(FontAwesome.Icon.faw_gamepad),
-                        new PrimaryDrawerItem().withName(R.string.invite_friend).withIcon(FontAwesome.Icon.faw_eye),
-                        new PrimaryDrawerItem().withName(R.string.coupon).withIcon(FontAwesome.Icon.faw_eye),
-                        new PrimaryDrawerItem().withName(R.string.feedback).withIcon(FontAwesome.Icon.faw_eye),
-                        new PrimaryDrawerItem().withName(R.string.help).withIcon(FontAwesome.Icon.faw_eye),
-                        new PrimaryDrawerItem().withName(R.string.contact).withIcon(FontAwesome.Icon.faw_eye),
-                        new SectionDrawerItem().withName(R.string.member),
-                        new SecondaryDrawerItem().withName(R.string.login).withIcon(FontAwesome.Icon.faw_bullhorn),
-                        new SecondaryDrawerItem().withName(R.string.sign_up).withIcon(FontAwesome.Icon.faw_bullhorn)
+                        new PrimaryDrawerItem().withName(R.string.book_your_room).withIcon(FontAwesome.Icon.faw_home),
+//                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withDescription("This is a description").withIcon(FontAwesome.Icon.faw_eye),
+//                        new CustomUrlPrimaryDrawerItem().withName(R.string.drawer_item_fragment_drawer).withDescription(R.string.drawer_item_fragment_drawer_desc).withIcon("https://avatars3.githubusercontent.com/u/1476232?v=3&s=460"),
+                        new SectionDrawerItem().withName(R.string.invite_friend),
+                        new SecondaryDrawerItem().withName(R.string.coupon).withIcon(FontAwesome.Icon.faw_cart_plus),
+                        new SecondaryDrawerItem().withName(R.string.feedback).withIcon(FontAwesome.Icon.faw_database).withEnabled(false),
+                        new SecondaryDrawerItem().withName(R.string.help).withIcon(FontAwesome.Icon.faw_github),
+                        new SecondaryDrawerItem().withName(R.string.contact).withSelectedIconColor(Color.RED).withIconTintingEnabled(true).withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_plus).actionBar().paddingDp(5).colorRes(R.color.material_drawer_dark_primary_text)).withTag("Bullhorn"),
+                        new SecondaryDrawerItem().withName(R.string.member).withIcon(FontAwesome.Icon.faw_question).withEnabled(false)
+                )
+                .withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
+                    @Override
+                    public boolean onNavigationClickListener(View clickedView) {
+                        MainActivity.this.finish();
+                        return false;
+                    }
+                })
+                .addStickyDrawerItems(
+                        new SecondaryDrawerItem().withName(R.string.login).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(10),
+                        new SecondaryDrawerItem().withName(R.string.sign_up).withIcon(FontAwesome.Icon.faw_github)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
@@ -108,24 +119,70 @@ public class MainActivity extends AppCompatActivity {
                         // update the main content by replacing fragments
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
-                                .replace(R.id.container, objectFragment).commit();
-                        // .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                                .replace(R.id.frame_container, objectFragment).commit();
                         return false;
                     }
                 })
+                .withSavedInstance(savedInstanceState)
                 .build();
 
-        fillFab();
-        loadBackdrop();
+
     }
 
-    private void loadBackdrop() {
-        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load("https://unsplash.it/600/300/?random").centerCrop().into(imageView);
+    /**
+     * small helper method to reuse the logic to build the AccountHeader
+     * this will be used to replace the header of the drawer with a compact/normal header
+     *
+     * @param compact
+     * @param savedInstanceState
+     */
+    private void buildHeader(boolean compact, Bundle savedInstanceState) {
+        // Create the AccountHeader
+        headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.header)
+                .withCompactStyle(compact)
+                .addProfiles(
+                        profile,
+                        //don't ask but google uses 14dp for the add account icon in gmail but 20dp for the normal icons (like manage account)
+                        new ProfileSettingDrawerItem().withName("Add Account").withDescription("Add new GitHub Account").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_plus).actionBar().paddingDp(5).colorRes(R.color.material_drawer_dark_primary_text)).withIdentifier(PROFILE_SETTING),
+                        new ProfileSettingDrawerItem().withName("Manage Account").withIcon(GoogleMaterial.Icon.gmd_settings)
+                )
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile profile, boolean current) {
+                        if (profile instanceof IDrawerItem && ((IDrawerItem) profile).getIdentifier() == PROFILE_SETTING) {
+                            IProfile newProfile = new ProfileDrawerItem().withNameShown(true).withName("Batman").withEmail("batman@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile));
+                            if (headerResult.getProfiles() != null) {
+                                headerResult.addProfile(newProfile, headerResult.getProfiles().size() - 2);
+                            } else {
+                                headerResult.addProfiles(newProfile);
+                            }
+                        }
+                        return false;
+                    }
+                })
+                .withSavedInstance(savedInstanceState)
+                .build();
     }
 
-    private void fillFab() {
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_action_button);
-        fab.setImageDrawable(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_home).actionBar().color(Color.WHITE));
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //add the values which need to be saved from the drawer to the bundle
+        outState = result.saveInstanceState(outState);
+        //add the values which need to be saved from the accountHeader to the bundle
+        outState = headerResult.saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
+
+    @Override
+    public void onBackPressed() {
+        //handle the back press :D close the drawer first and if the drawer is closed close the activity
+        if (result != null && result.isDrawerOpen()) {
+            result.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }
