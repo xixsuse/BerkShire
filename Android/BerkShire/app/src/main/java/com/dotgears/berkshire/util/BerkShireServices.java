@@ -1,5 +1,7 @@
 package com.dotgears.berkshire.util;
 
+import android.os.Parcel;
+
 import com.dotgears.berkshire.model.Amenities;
 import com.dotgears.berkshire.model.Hotel;
 
@@ -28,7 +30,7 @@ public class BerkShireServices {
         try {
             jsonA = new JSONArray(jsonAT.get());
             for (int i = 0; i < jsonA.length(); i++) {
-                Hotel hotel = new Hotel();
+                Hotel hotel = new Hotel(Parcel.obtain());
                 JSONObject childJSONObject = jsonA.getJSONObject(i);
                 hotel.setHotelName(childJSONObject.getString("Name"));
                 hotel.setHotelAddress(childJSONObject
