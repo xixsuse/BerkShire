@@ -4,6 +4,7 @@ package com.dotgears.berkshire.model;
  * Created by My PC on 04/12/2015.
  */
 public class Amenities {
+    public int amenitiesID;
     public String amenitiesName;
     public String amenitiesCategory;
     public String amenitiesIcon;
@@ -14,6 +15,15 @@ public class Amenities {
 
     public String getAmenitiesCategory() {
         return amenitiesCategory;
+    }
+
+    public void setAmenitiesID(int amenitiesID) {
+        this.amenitiesID = amenitiesID;
+    }
+
+    public int getAmenitiesID() {
+
+        return amenitiesID;
     }
 
     public String getAmenitiesIcon() {
@@ -31,4 +41,5 @@ public class Amenities {
     public void setAmenitiesIcon(String amenitiesIcon) {
         this.amenitiesIcon = amenitiesIcon;
     }
+
 }

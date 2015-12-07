@@ -7,6 +7,10 @@ import android.os.Parcelable;
  * Created by My PC on 04/12/2015.
  */
 public class Hotel implements Parcelable {
+    public int hotelID;
+
+
+
     public String hotelName;
     public String hotelAddress;
     public String hotelThumnail;
@@ -17,6 +21,7 @@ public class Hotel implements Parcelable {
     public String hotelPrice;
 
     public Hotel(Parcel in) {
+        this.hotelID = in.readInt();
         this.hotelName = in.readString();
         this.hotelAddress = in.readString();
         this.hotelThumnail = in.readString();
@@ -26,7 +31,14 @@ public class Hotel implements Parcelable {
         this.hotelLongitude = in.readString();
         this.hotelPrice = in.readString();
     }
+    public void setHotelID(int hotelID) {
+        this.hotelID = hotelID;
+    }
 
+    public int getHotelID() {
+
+        return hotelID;
+    }
     public String getHotelPrice() {
         return hotelPrice;
     }
@@ -98,6 +110,7 @@ public class Hotel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(hotelID);
         dest.writeString(hotelName);
         dest.writeString(hotelAddress);
         dest.writeString(hotelPhone);
@@ -108,6 +121,7 @@ public class Hotel implements Parcelable {
         dest.writeString(hotelPrice);
     }
     private void readFromParcel(Parcel in) {
+        hotelID = in.readInt();
         hotelName = in.readString();
         hotelAddress = in.readString();
         hotelPhone = in.readString();
