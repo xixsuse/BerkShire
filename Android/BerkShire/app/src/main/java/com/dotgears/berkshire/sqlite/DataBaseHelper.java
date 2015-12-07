@@ -18,13 +18,12 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import fsoft.fwa.elearing.model.User;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/fsoft.fwa.elearing/databases/";
+    private static String DB_PATH = "/data/data/com.dotgears.berkshire/databases/";
 
-    private static String DB_NAME = "user.db";
+    private static String DB_NAME = "customer.db";
 
     private SQLiteDatabase myDataBase;
 
@@ -106,7 +105,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     // Customer Table
 
-//    public static final String CATE_KEY_CUSTOMERID = "customerId";
+    public static final String CATE_KEY_CUSTOMERID = "customerId";
     public static final String CATE_KEY_CUSTOMERNAME = "customerName";
     public static final String CATE_KEY_CUSTOMEREMAIL = "customerEmail";
     public static final String CATE_KEY_CUSTOMERPHONE = "customerPhone";
@@ -126,40 +125,47 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         close();
     }
 
-    public User getUsert(int id) {
+    // Search By Id
+
+    public Customer getCustomerById(int id) {
         openDataBase();
-        Cursor cursor = myDataBase.query(tblusers, new String[]{
-                        CATE_KEY_USERID, CATE_KEY_FULLNAME, CATE_KEY_EMAIL,
-                        CATE_KEY_AVATAR}, CATE_KEY_USERID + "=?",
+        Cursor cursor = myDataBase.query(tblCustomers, new String[]{
+                        CATE_KEY_CUSTOMERID, CATE_KEY_CUSTOMERNAME, CATE_KEY_CUSTOMEREMAIL,
+                        CATE_KEY_CUSTOMERPHONE,CATE_KEY_CUSTOMERAVATAR}, CATE_KEY_CUSTOMERID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        User user = new User(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        Customer customer = new Customer(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4));
         close();
-        return user;
+        return customer;
     }
 
-    public List<User> getAllUser() {
+    // Search All
+
+    public List<Customer> getAllCustomer() {
         openDataBase();
-        List<User> allUser = new ArrayList<User>();
-        String selectQuery = "SELECT  * FROM " + tblusers;
+        List<Customer> allCustomer = new ArrayList<Customer>();
+        String selectQuery = "SELECT  * FROM " + tblCustomers;
 
         Cursor cursor = myDataBase.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                User users = new User();
-                users.setUserID(Integer.parseInt(cursor.getString(1)));
-                users.setFullName(cursor.getString(2));
-                users.setEmail(cursor.getString(3));
-                users.setAvatar(cursor.getString(4));
-                allUser.add(users);
+                Customer customer = new Customer();
+                customer.setCustomerID(Integer.parseInt(cursor.getString(0)));
+                customer.setCustomerName(cursor.getString(1));
+                customer.setCustomerEmail(cursor.getString(2));
+                customer.setCustomerPhone(cursor.getString(3));
+                customer.setCustomerAvatar(cursor.getString(4));
+                allCustomer.add(customer);
             } while (cursor.moveToNext());
         }
         close();
-        return allUser;
+        return allCustomer;
     }
+
+    // List Cursor
 
     public Cursor ListCursor(String selectQuery) {
         openDataBase();
@@ -168,40 +174,47 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor1;
     }
 
-    public int updateUser(User user) {
+    // Update Customer
+
+    public int updateCustomer(Customer customer) {
         openDataBase();
         ContentValues values = new ContentValues();
-        values.put(CATE_KEY_FULLNAME, user.getFullName());
-        values.put(CATE_KEY_EMAIL, user.getEmail());
-        values.put(CATE_KEY_AVATAR, user.getAvatar());
-        values.put(CATE_KEY_USERID, user.getUserID());
+        values.put(CATE_KEY_CUSTOMERNAME, customer.getCustomerName());
+        values.put(CATE_KEY_CUSTOMEREMAIL, customer.getCustomerEmail());
+        values.put(CATE_KEY_CUSTOMERPHONE, customer.getCustomerPhone());
+        values.put(CATE_KEY_CUSTOMERAVATAR, customer.getCustomerAvatar());
+        values.put(CATE_KEY_CUSTOMERID, customer.getCustomerID());
 
         close();
-        return myDataBase.update(tblusers, values, CATE_KEY_USERID + " = ?",
-                new String[]{String.valueOf(user.getUserID())});
+        return myDataBase.update(tblCustomers, values, CATE_KEY_CUSTOMERID + " = ?",
+                new String[]{String.valueOf(customer.getCustomerID())});
     }
 
-    public void deleteUser(User user) {
+    // Delete Customer
+
+    public void deleteCustomer(Customer customer) {
         openDataBase();
-        myDataBase.delete(tblusers, CATE_KEY_USERID + " = ?",
-                new String[]{String.valueOf(user.getUserID())});
+        myDataBase.delete(tblCustomers, CATE_KEY_CUSTOMERID + " = ?",
+                new String[]{String.valueOf(customer.getCustomerID())});
         close();
     }
 
-    public void deleteAllUser() {
+    // Delete All Customer
+
+    public void deleteAllCustomer() {
         openDataBase();
-        String sQuery = "DELETE FROM " + tblusers;
+        String sQuery = "DELETE FROM " + tblCustomers;
         myDataBase.execSQL(sQuery);
         close();
     }
 
-    public int getUserCount() {
+    public int getCustomerCount() {
         openDataBase();
-        String countQuery = "SELECT  * FROM " + tblusers;
+        String countQuery = "SELECT  * FROM " + tblCustomers;
         Cursor cursor = myDataBase.rawQuery(countQuery, null);
-        int cnt = cursor.getCount();
+        int count = cursor.getCount();
         cursor.close();
         close();
-        return cnt;
+        return count;
     }
 }

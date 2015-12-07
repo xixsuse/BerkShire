@@ -9,6 +9,19 @@ public class Customer {
     public String customerEmail;
     public String customerPhone;
     public String customerAvatar;
+
+    public Customer() {
+
+    }
+
+    public Customer(int customerID, String customerName, String customerEmail, String customerPhone, String customerAvatar) {
+        this.customerID = customerID;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
+        this.customerAvatar = customerAvatar;
+    }
+
     public int getCustomerID() {
         return customerID;
     }
