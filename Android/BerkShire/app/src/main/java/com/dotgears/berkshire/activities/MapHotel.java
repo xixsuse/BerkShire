@@ -1,4 +1,4 @@
-package com.dotgears.berkshire.fragments;
+package com.dotgears.berkshire.activities;
 
 import android.app.Activity;
 import android.content.Intent;

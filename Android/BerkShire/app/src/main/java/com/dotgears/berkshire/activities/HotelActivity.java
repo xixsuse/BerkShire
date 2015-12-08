@@ -14,7 +14,6 @@ import android.widget.ListView;
 
 import com.dotgears.berkshire.R;
 import com.dotgears.berkshire.adapters.HotelAdapter;
-import com.dotgears.berkshire.fragments.MapHotel;
 import com.dotgears.berkshire.model.Hotel;
 import com.dotgears.berkshire.util.BerkShireServices;
 
