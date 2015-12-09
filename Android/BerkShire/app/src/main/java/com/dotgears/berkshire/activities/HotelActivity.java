@@ -35,7 +35,7 @@ public class HotelActivity extends AppCompatActivity {
         setContentView(R.layout.list_hotel);
 
         // Handle Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appBar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appBarHotel);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("BerkShire");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

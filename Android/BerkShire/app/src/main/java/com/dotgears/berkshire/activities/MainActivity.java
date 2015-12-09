@@ -1,5 +1,6 @@
 package com.dotgears.berkshire.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .addStickyDrawerItems(
-                        new SecondaryDrawerItem().withName(R.string.login).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(10),
+                        new SecondaryDrawerItem().withName(R.string.sign_in).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(10),
                         new SecondaryDrawerItem().withName(R.string.sign_up).withIcon(FontAwesome.Icon.faw_github)
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -105,11 +106,16 @@ public class MainActivity extends AppCompatActivity {
                             case "Help":
                                 objectFragment = new BookYourRoom();
                                 break;
-                            case "Login":
+                            case "Sign In":
+
                                 objectFragment = new BookYourRoom();
+                                Intent itSignIn = new Intent(getApplicationContext(),SignIn.class);
+                                startActivity(itSignIn);
                                 break;
                             case "Sign Up":
                                 objectFragment = new BookYourRoom();
+                                Intent itSignOut = new Intent(getApplicationContext(),SignUp.class);
+                                startActivity(itSignOut);
                                 break;
                             case "Contact":
                                 objectFragment = new BookYourRoom();

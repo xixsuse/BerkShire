@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.dotgears.berkshire.activities.HotelActivity">
 
-    <include layout="@layout/app_bar" />
+    <include layout="@layout/app_bar_hotel" />
 
     <ListView
         android:id="@+id/listHotel"

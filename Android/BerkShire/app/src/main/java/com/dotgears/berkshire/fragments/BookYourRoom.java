@@ -50,7 +50,7 @@ public class BookYourRoom extends Fragment {
 //        Spinner
         spinner1 = (BetterSpinner)rootView.findViewById(R.id.spinner1);
         ButterKnife.inject(getActivity());
-        String[] list = getResources().getStringArray(R.array.month);
+        String[] list = getResources().getStringArray(R.array.room);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(),
                 android.R.layout.simple_dropdown_item_1line, list);
         spinner1.setAdapter(adapter);
