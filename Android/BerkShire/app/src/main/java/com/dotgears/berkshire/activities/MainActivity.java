@@ -22,7 +22,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("BerkShire");
 
         // Create a few sample profile
-        profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile));
+        profile = new ProfileDrawerItem().withName("Minh Dat").withEmail("minhdatplus@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile));
 
         // Create the AccountHeader
         buildHeader(false, savedInstanceState);
@@ -65,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
                         new PrimaryDrawerItem().withName(R.string.book_your_room).withIcon(FontAwesome.Icon.faw_home),
 //                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withDescription("This is a description").withIcon(FontAwesome.Icon.faw_eye),
 //                        new CustomUrlPrimaryDrawerItem().withName(R.string.drawer_item_fragment_drawer).withDescription(R.string.drawer_item_fragment_drawer_desc).withIcon("https://avatars3.githubusercontent.com/u/1476232?v=3&s=460"),
-                        new SectionDrawerItem().withName(R.string.invite_friend),
+                        new SecondaryDrawerItem().withName(R.string.invite_friend).withIcon(FontAwesome.Icon.faw_amazon),
                         new SecondaryDrawerItem().withName(R.string.coupon).withIcon(FontAwesome.Icon.faw_cart_plus),
-                        new SecondaryDrawerItem().withName(R.string.feedback).withIcon(FontAwesome.Icon.faw_database).withEnabled(false),
+                        new SecondaryDrawerItem().withName(R.string.feedback).withIcon(FontAwesome.Icon.faw_database),
                         new SecondaryDrawerItem().withName(R.string.help).withIcon(FontAwesome.Icon.faw_github),
                         new SecondaryDrawerItem().withName(R.string.contact).withSelectedIconColor(Color.RED).withIconTintingEnabled(true).withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_plus).actionBar().paddingDp(5).colorRes(R.color.material_drawer_dark_primary_text)).withTag("Bullhorn"),
-                        new SecondaryDrawerItem().withName(R.string.member).withIcon(FontAwesome.Icon.faw_question).withEnabled(false)
+                        new SecondaryDrawerItem().withName(R.string.member).withIcon(FontAwesome.Icon.faw_question)
                 )
                 .withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
                     @Override
@@ -96,15 +95,21 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "Invite Friend":
                                 objectFragment = new BookYourRoom();
+                                Intent itInviteFriend = new Intent(getApplicationContext(),InviteFriend.class);
+                                startActivity(itInviteFriend);
                                 break;
                             case "Coupon":
                                 objectFragment = new BookYourRoom();
                                 break;
                             case "Feedback":
                                 objectFragment = new BookYourRoom();
+                                Intent itFeedBack = new Intent(getApplicationContext(),FeedBack.class);
+                                startActivity(itFeedBack);
                                 break;
                             case "Help":
                                 objectFragment = new BookYourRoom();
+                                Intent itHelp = new Intent(getApplicationContext(),Help.class);
+                                startActivity(itHelp);
                                 break;
                             case "Sign In":
 

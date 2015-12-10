@@ -52,6 +52,15 @@
         <activity
             android:name=".activities.SignUp"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.FeedBack"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.InviteFriend"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.Help"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

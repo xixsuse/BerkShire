@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_bar_feedback" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dip">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_marginTop="10dip"
+            android:text="Give us your feedback"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/feebBackEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="40dip"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/feedBackSuggest"
+            android:layout_width="match_parent"
+            android:layout_height="180dip"
+            android:layout_marginTop="10dip"
+            android:hint="Suggestion" />
+
+        <Button
+            android:id="@+id/feedBackSend"
+            android:layout_marginTop="20dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send" />
+    </LinearLayout>
+
+</LinearLayout>
