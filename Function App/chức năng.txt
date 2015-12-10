@@ -1,0 +1,17 @@
+﻿Các chức năng chính :
+	1.Book your room: Tìm kiếm khách sạn xung quanh khu vực hiện tại bằng cách :
+		-Chọn địa điểm cần tìm hotel
+		-Chọn thời gian check in ; check out
+		-Chọn phòng
+		-Click nút tìm kiếm
+	2.Booking history: Xem lịch sử đặt phòng
+	3.Mời bạn bè cài app : Có thể share qua các app như Facebook,Zalo,G+,...
+	4.Nhận coupon : bằng các hình thức khác nhau nhận ưu đãi
+	5.Feedback :  gửi feedback qua form
+	6.Help : trợ giúp thông qua FAQs ( các câu hỏi thường gặp ); 
+		các điều khoản và điều kiện chung - Term and condiitons
+		rate app qua store
+	7.Sign Up : đăng ký bằng cách thông thường hoặc đăng ký qua mạng xã hội Facebook
+	8.Sign In : đăng nhập bằng cách thông thường hoặc đăng nhập qua mạng xã hội Facebook
+		
+	
