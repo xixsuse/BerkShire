@@ -32,10 +32,12 @@ public class BerkShireServices {
             for (int i = 0; i < jsonA.length(); i++) {
                 Hotel hotel = new Hotel(Parcel.obtain());
                 JSONObject childJSONObject = jsonA.getJSONObject(i);
+                hotel.setHotelID(childJSONObject.getInt("ID"));
                 hotel.setHotelName(childJSONObject.getString("Name"));
                 hotel.setHotelAddress(childJSONObject
                         .getString("Address"));
                 hotel.setHotelThumnail(childJSONObject.getString("Thumbnail"));
+                hotel.setHotelSlideImage(childJSONObject.getString("SlideImage"));
                 hotel.setHotelPhone(childJSONObject
                         .getString("Phone"));
                 hotel.setHotelLocation(childJSONObject

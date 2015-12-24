@@ -45,6 +45,9 @@
         <activity
             android:name=".activities.HotelActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".activities.HotelDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".activities.MapHotel" />
         <activity
             android:name=".activities.SignIn"

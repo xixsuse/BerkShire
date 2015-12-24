@@ -56,12 +56,14 @@ public class HotelActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-//                String content = listHotels.get(position).getContent();
-//                Intent it = new Intent(getApplicationContext(),
-//                        TwoDetail.class);
-//                it.putExtra("Content", content);
-//                startActivity(it);
+                Intent intent = new Intent(getApplicationContext(), HotelDetailActivity.class);
+//                intent.putParcelableArrayListExtra("listHotel", listHotels);
+                Bundle hotelBundle = new Bundle();
+                hotelBundle.putSerializable("hotel",listHotels.get(position));
+                hotelBundle.putInt("idHotel", listHotels.get(position).getHotelID());
+//                Log.d("id", String.valueOf(listHotels.get(position).getHotelID()));
+                intent.putExtras(hotelBundle);
+                startActivity(intent);
             }
         });
 

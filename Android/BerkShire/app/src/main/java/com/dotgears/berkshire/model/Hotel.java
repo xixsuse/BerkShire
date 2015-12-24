@@ -3,10 +3,12 @@ package com.dotgears.berkshire.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by My PC on 04/12/2015.
  */
-public class Hotel implements Parcelable {
+public class Hotel implements Parcelable ,Serializable{
     public int hotelID;
 
 
@@ -14,6 +16,7 @@ public class Hotel implements Parcelable {
     public String hotelName;
     public String hotelAddress;
     public String hotelThumnail;
+    public String hotelSlideImage;
     public String hotelPhone;
     public String hotelLocation;
     public String hotelLatitude;
@@ -25,12 +28,22 @@ public class Hotel implements Parcelable {
         this.hotelName = in.readString();
         this.hotelAddress = in.readString();
         this.hotelThumnail = in.readString();
+        this.hotelSlideImage = in.readString();
         this.hotelPhone = in.readString();
         this.hotelLocation = in.readString();
         this.hotelLatitude = in.readString();
         this.hotelLongitude = in.readString();
         this.hotelPrice = in.readString();
     }
+
+    public String getHotelSlideImage() {
+        return hotelSlideImage;
+    }
+
+    public void setHotelSlideImage(String hotelSlideImage) {
+        this.hotelSlideImage = hotelSlideImage;
+    }
+
     public void setHotelID(int hotelID) {
         this.hotelID = hotelID;
     }
@@ -115,6 +128,7 @@ public class Hotel implements Parcelable {
         dest.writeString(hotelAddress);
         dest.writeString(hotelPhone);
         dest.writeString(hotelThumnail);
+        dest.writeString(hotelSlideImage);
         dest.writeString(hotelLocation);
         dest.writeString(hotelLatitude);
         dest.writeString(hotelLongitude);
@@ -126,6 +140,7 @@ public class Hotel implements Parcelable {
         hotelAddress = in.readString();
         hotelPhone = in.readString();
         hotelThumnail = in.readString();
+        hotelSlideImage = in.readString();
         hotelLocation = in.readString();
         hotelLatitude = in.readString();
         hotelLongitude = in.readString();
