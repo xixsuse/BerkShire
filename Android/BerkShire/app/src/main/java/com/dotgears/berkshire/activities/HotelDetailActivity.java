@@ -1,11 +1,14 @@
 package com.dotgears.berkshire.activities;
 
+import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -23,24 +26,33 @@ import java.util.HashMap;
 /**
  * Created by My PC on 24/12/2015.
  */
-public class HotelDetailActivity extends ActionBarActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-//    public ArrayList<Hotel> listHotels;
+public class HotelDetailActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+    //    public ArrayList<Hotel> listHotels;
+    private static final String FRAGMENT_NORMAL_TAB_DEMO = "normal tab demo";
     private SliderLayout mDemoSlider;
     public Hotel hotel;
     public int idHotel;
     public String[] slideImg;
     private GoogleMap googleMap;
+    public TextView hotelDetailName, hotelDetailPrice;
+    TabHost tabHost;
+    LocalActivityManager mLocalActivityManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hotel_detail);
 
-        Intent it = this.getIntent();
+        Bundle extras = getIntent().getExtras();
 //        listHotels = it.getParcelableArrayListExtra("listHotel");
-        idHotel = getIntent().getExtras().getInt("idHotel");
-        hotel = (Hotel)getIntent().getExtras().getSerializable("hotel");
+        idHotel = extras.getInt("idHotel");
+        hotel = (Hotel) extras.getSerializable("hotel");
         slideImg = splitStringImg(hotel.getHotelSlideImage());
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
+
+        hotelDetailName = (TextView) findViewById(R.id.hotelDetailName);
+        hotelDetailName.setText(hotel.getHotelName());
+        hotelDetailPrice = (TextView) findViewById(R.id.hotelDetailPrice);
+        hotelDetailPrice.setText(hotel.getHotelPrice() + " / per night");
 
         HashMap<String, String> url_maps = new HashMap<String, String>();
         url_maps.put("ImageOne", slideImg[0]);
@@ -81,11 +93,40 @@ public class HotelDetailActivity extends ActionBarActivity implements BaseSlider
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.setMyLocationEnabled(false);
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
-
-
-
+    ///////// TAB /////////////////
+        initTabs(savedInstanceState);
     }
-    public String[] splitStringImg(String root){
+    private void initTabs(Bundle savedInstanceState) {
+        tabHost = (TabHost) findViewById(android.R.id.tabhost);     // The activity TabHost
+        mLocalActivityManager = new LocalActivityManager(this, false);
+        mLocalActivityManager.dispatchCreate(savedInstanceState);
+        tabHost.setup(mLocalActivityManager);
+
+        TabHost.TabSpec hotel,room,food;                               // Resusable TabSpec for each tab
+        Intent intent;                                      // Reusable Intent for each tab
+
+        intent = new Intent().setClass(this, SignIn.class);
+        hotel = tabHost.newTabSpec("Hotel").setIndicator("Hotel")
+                .setContent(intent);
+        tabHost.addTab(hotel);
+
+        intent = new Intent().setClass(this, SignUp.class);
+        room = tabHost.newTabSpec("Room").setIndicator("Room")
+                .setContent(intent);
+        tabHost.addTab(room);
+
+
+        intent = new Intent().setClass(this, SignIn.class);
+        food = tabHost.newTabSpec("Food").setIndicator("Food")
+                .setContent(intent);
+        tabHost.addTab(food);
+
+        tabHost.setCurrentTab(0);
+    }
+
+
+
+    public String[] splitStringImg(String root) {
 
         String[] slideImg = root.split("\\,");
 
@@ -125,5 +166,10 @@ public class HotelDetailActivity extends ActionBarActivity implements BaseSlider
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

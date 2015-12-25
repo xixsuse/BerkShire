@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bpWhite"
     android:orientation="vertical">
 
     <com.daimajia.slider.library.SliderLayout
@@ -19,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         custom:selected_color="#0095BF"
         custom:selected_drawable="@drawable/bird"
         custom:selected_height="6dp"
@@ -32,19 +34,45 @@
         custom:unselected_padding_left="5dp"
         custom:unselected_padding_right="5dp"
         custom:unselected_width="6dp" />
+
     <TextView
         android:id="@+id/hotelDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
+
     <TextView
         android:id="@+id/hotelDetailPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
+
     <fragment
         android:id="@+id/hotelDeitalMap"
+        class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        class="com.google.android.gms.maps.MapFragment" />
+        android:layout_height="150dp" />
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+        </LinearLayout>
+    </TabHost>
 </LinearLayout>

@@ -10,9 +10,6 @@ import java.io.Serializable;
  */
 public class Hotel implements Parcelable ,Serializable{
     public int hotelID;
-
-
-
     public String hotelName;
     public String hotelAddress;
     public String hotelThumnail;
@@ -126,9 +123,9 @@ public class Hotel implements Parcelable ,Serializable{
         dest.writeInt(hotelID);
         dest.writeString(hotelName);
         dest.writeString(hotelAddress);
-        dest.writeString(hotelPhone);
         dest.writeString(hotelThumnail);
         dest.writeString(hotelSlideImage);
+        dest.writeString(hotelPhone);
         dest.writeString(hotelLocation);
         dest.writeString(hotelLatitude);
         dest.writeString(hotelLongitude);
@@ -138,8 +135,8 @@ public class Hotel implements Parcelable ,Serializable{
         hotelID = in.readInt();
         hotelName = in.readString();
         hotelAddress = in.readString();
-        hotelPhone = in.readString();
         hotelThumnail = in.readString();
+        hotelPhone = in.readString();
         hotelSlideImage = in.readString();
         hotelLocation = in.readString();
         hotelLatitude = in.readString();
